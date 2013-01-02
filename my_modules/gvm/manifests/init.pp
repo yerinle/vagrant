@@ -4,7 +4,7 @@ class gvm($version='latest', $install_rvm=true) {
   if $install_rvm {
     class {
       'gvm::dependencies': stage => 'gvm-install';
-      'gvm::system':       stage => 'gvm-install';
+      'gvm::system':       stage => 'main';
     }
   }
 }

@@ -66,13 +66,4 @@ exec { "curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/insta
   require => PACKAGE['curl', 'zsh', 'git']
 }
 
-# # install gvm
-# exec { "curl -s get.gvmtool.net | bash":
-#   cwd => "/var/tmp",
-#   path => ["/usr/bin", "/usr/sbin", "/bin"],
-#   require => [PACKAGE['curl', 'unzip'], File['jdk_home']]
-# }
-
 include gvm
-
-include rvm
