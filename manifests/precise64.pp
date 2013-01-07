@@ -18,7 +18,9 @@ file { '/etc/motd':
       command => "apt-get update",
       cwd => "/var/tmp",
       path    => ["/usr/bin", "/usr/sbin"],
-      before => Class['java']
+      # logoutput => true,
+       before => Class['java']
+      # before => Class['Tomcat::Package']
 }
 
 # export jdk home
@@ -31,16 +33,17 @@ file { '/etc/motd':
 
 include java
 # include gvm
-# include grails
-
+include grails
 include tomcat
 
-tomcat::instance {"foa_tomcat":
-  ensure    => present,
-  http_port => "80",
-}
+# include tomcat
 
-include jenkins
+# tomcat::instance {"foa_tomcat":
+#   ensure    => present,
+#   http_port => "80",
+# }
+
+# include jenkins
 
 # # ensure vim is present
 # package { "vim": 
